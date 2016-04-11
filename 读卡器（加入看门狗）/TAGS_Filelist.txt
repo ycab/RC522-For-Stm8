@@ -1,0 +1,10 @@
+delay\delay.c
+main.c
+spi\spi.c
+stm8_interrupt_vector.c
+uart.c
+delay\delay.h
+spi\spi.h
+stm8s103k.h
+uart.h
+..\..\..\..\program files (x86)\cosmic\cxstm8\hstm8\mods0.h

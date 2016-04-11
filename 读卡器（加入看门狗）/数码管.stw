@@ -1,0 +1,12 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=数码管.stp
+Dependencies=
+[Options]
+ActiveProject=数码管
+ActiveConfig=Debug
+AddSortedElements=1

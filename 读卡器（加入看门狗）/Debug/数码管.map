@@ -1,0 +1,531 @@
+
+Map of Debug\数码管.sm8 from link file Debug\数码管.lkf - Tue Mar 29 13:06:36 2016
+
+
+                               --------
+                               Segments
+                               --------
+
+start 00008080 end 00008080 length     0 segment .const
+start 000080a9 end 00008980 length  2263 segment .text
+start 00004000 end 00004000 length     0 segment .eeprom
+start 00000000 end 00000021 length    33 segment .bsct, initialized
+start 00008088 end 000080a9 length    33 segment .bsct, from
+start 00000021 end 0000006d length    76 segment .ubsct
+start 0000006d end 0000006d length     0 segment .bit
+start 0000006d end 0000006d length     0 segment .share
+start 00000100 end 00000100 length     0 segment .data
+start 00000100 end 00000100 length     0 segment .bss
+start 00000000 end 0000035a length   858 segment .info.
+start 00000000 end 00009991 length 39313 segment .debug
+start 00008000 end 00008080 length   128 segment .const
+start 00008080 end 00008088 length     8 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8:
+start 000080a9 end 000080f4 length    75 section .text
+start 00000100 end 00000100 length     0 section .bss
+start 00000021 end 00000021 length     0 section .ubsct
+start 00000000 end 0000002f length    47 section .info.
+
+Debug\delay.o:
+start 000080f4 end 0000811a length    38 section .text
+start 00000000 end 00001c14 length  7188 section .debug
+start 0000002f end 0000009c length   109 section .info.
+
+Debug\main.o:
+start 0000811a end 000083a4 length   650 section .text
+start 00000000 end 00000020 length    32 section .bsct
+start 00000021 end 00000067 length    70 section .ubsct
+start 00001c14 end 00003b29 length  7957 section .debug
+start 0000009c end 00000108 length   108 section .info.
+
+Debug\rc522.o:
+start 000083a4 end 000088f0 length  1356 section .text
+start 00000020 end 00000021 length     1 section .bsct
+start 00003b29 end 00005e8a length  9057 section .debug
+start 00000108 end 00000175 length   109 section .info.
+
+Debug\spi.o:
+start 000088f0 end 00008922 length    50 section .text
+start 00005e8a end 00007ac6 length  7228 section .debug
+start 00000175 end 000001e0 length   107 section .info.
+
+Debug\uart.o:
+start 00008922 end 0000897f length    93 section .text
+start 00007ac6 end 00009826 length  7520 section .debug
+start 000001e0 end 0000024c length   108 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)xreg.o:
+start 00000067 end 0000006a length     3 section .ubsct
+start 0000024c end 0000027a length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)yreg.o:
+start 0000006a end 0000006d length     3 section .ubsct
+start 0000027a end 000002a8 length    46 section .info.
+
+Debug\stm8_interrupt_vector.o:
+start 0000897f end 00008980 length     1 section .text
+start 00009826 end 00009991 length   363 section .debug
+start 000002a8 end 00000325 length   125 section .info.
+start 00008000 end 00008080 length   128 section .const
+
+
+                             -----------
+                             Stack usage
+                             -----------
+
+Debug\delay.o:
+_delayms                    5   (5)
+
+Debug\main.o:
+_Beep_init                  2   (2)
+_IWDG_init                  2   (2)
+_KM1_init                   2   (2)
+_cal_CRC                    8   (8)
+_main                  >  115   (10)
+f_UART1_RX_IRQHandler  >    6   (6)
+
+Debug\rc522.o:
+_ClearBitMask              15   (5)
+_PcdAntennaOff         >   17   (2)
+_PcdAntennaOn          >   17   (2)
+_PcdAnticoll              105   (73)
+_PcdComMF522_P             32   (17)
+_PcdRequest               105   (73)
+_PcdSelect             >  103   (71)
+_RC522_Init                18   (3)
+_ReadRawRC                  8   (3)
+_SPI_RW                     3   (3)
+_SetBitMask                15   (5)
+_WriteRawRC                10   (5)
+
+Debug\spi.o:
+_SPI_SendByte          >    3   (3)
+_SPI_conf                   2   (2)
+
+Debug\stm8_interrupt_vector.o:
+f_NonHandledInterrupt  >    5   (5)
+
+Debug\uart.o:
+_UART1_ReceiveByte     >    3   (3)
+_UART1_SendByte             2   (2)
+_UART1_SendString      >   10   (8)
+_uart_conf                  4   (4)
+
+Stack size: 121
+
+
+                              ---------
+                              Call tree
+                              ---------
+   1 > _PcdAntennaOff: (2)
+   2      + _ClearBitMask: (5)
+   3      |    + _ReadRawRC: (3)
+   4      |    |    + _SPI_RW: (3)
+   5      |    |    + _delayms: (5)
+          |    | 
+   6      |    + _WriteRawRC: (5)
+   7      |    |    + _SPI_RW --> 4
+   8      |    |    + _delayms --> 5
+          |    | 
+          | 
+   9      + _delayms --> 5
+       
+  10 > _PcdAntennaOn: (2)
+  11      + _SetBitMask: (5)
+  12      |    + _ReadRawRC --> 3
+  13      |    + _WriteRawRC --> 6
+          | 
+  14      + _delayms --> 5
+       
+  15 > _PcdSelect: (71)
+  16      + _PcdComMF522_P: (17)
+  17      |    + _ClearBitMask --> 2
+  18      |    + _ReadRawRC --> 3
+  19      |    + _SetBitMask --> 11
+  20      |    + _WriteRawRC --> 6
+  21      |    + _delayms --> 5
+          | 
+  22      + _SetBitMask --> 11
+       
+  23 > _SPI_SendByte: (3)
+
+  24 > _UART1_ReceiveByte: (3)
+
+  25 > _UART1_SendString: (8)
+  26      + _UART1_SendByte: (2)
+       
+  27 > __stext: (0)
+
+  28 > _main: (10)
+  29      + _Beep_init: (2)
+  30      + _IWDG_init: (2)
+  31      + _KM1_init: (2)
+  32      + _PcdAnticoll: (73)
+  33      |    + _ClearBitMask --> 2
+  34      |    + _PcdComMF522_P --> 16
+  35      |    + _WriteRawRC --> 6
+  36      |    + _delayms --> 5
+          | 
+  37      + _PcdRequest: (73)
+  38      |    + _ClearBitMask --> 2
+  39      |    + _PcdComMF522_P --> 16
+  40      |    + _ReadRawRC --> 3
+  41      |    + _SetBitMask --> 11
+  42      |    + _WriteRawRC --> 6
+  43      |    + _delayms --> 5
+          | 
+  44      + _RC522_Init: (3)
+  45      |    + _ReadRawRC --> 3
+  46      |    + _SetBitMask --> 11
+  47      |    + _WriteRawRC --> 6
+  48      |    + _delayms --> 5
+          | 
+  49      + _SPI_conf: (2)
+  50      + _UART1_SendByte --> 26
+  51      + _cal_CRC: (8)
+  52      + _delayms --> 5
+  53      + _uart_conf: (4)
+       
+  54 > f_NonHandledInterrupt: (5)
+
+  55 > f_UART1_RX_IRQHandler: (6)
+
+  56   _Beep_init --> 29
+
+  57   _ClearBitMask --> 2
+
+  58   _IWDG_init --> 30
+
+  59   _KM1_init --> 31
+
+  60   _PcdAnticoll --> 32
+
+  61   _PcdComMF522_P --> 16
+
+  62   _PcdRequest --> 37
+
+  63   _RC522_Init --> 44
+
+  64   _ReadRawRC --> 3
+
+  65   _SPI_RW --> 4
+
+  66   _SPI_conf --> 49
+
+  67   _SetBitMask --> 11
+
+  68   _UART1_SendByte --> 26
+
+  69   _WriteRawRC --> 6
+
+  70   _cal_CRC --> 51
+
+  71   _delayms --> 5
+
+  72   _uart_conf --> 53
+
+
+
+                               -------
+                               Symbols
+                               -------
+
+_ADC_AWCR               0000540e   defined in Debug\delay.o
+_ADC_AWCRH              0000540e   defined in Debug\delay.o
+_ADC_AWCRL              0000540f   defined in Debug\delay.o
+_ADC_AWSR               0000540c   defined in Debug\delay.o
+_ADC_AWSRH              0000540c   defined in Debug\delay.o
+_ADC_AWSRL              0000540d   defined in Debug\delay.o
+_ADC_CR1                00005401   defined in Debug\delay.o
+_ADC_CR2                00005402   defined in Debug\delay.o
+_ADC_CR3                00005403   defined in Debug\delay.o
+_ADC_CSR                00005400   defined in Debug\delay.o
+_ADC_DB0R               000053e0   defined in Debug\delay.o
+_ADC_DB0RH              000053e0   defined in Debug\delay.o
+_ADC_DB0RL              000053e1   defined in Debug\delay.o
+_ADC_DB1R               000053e2   defined in Debug\delay.o
+_ADC_DB1RH              000053e2   defined in Debug\delay.o
+_ADC_DB1RL              000053e3   defined in Debug\delay.o
+_ADC_DB2R               000053e4   defined in Debug\delay.o
+_ADC_DB2RH              000053e4   defined in Debug\delay.o
+_ADC_DB2RL              000053e5   defined in Debug\delay.o
+_ADC_DB3R               000053e6   defined in Debug\delay.o
+_ADC_DB3RH              000053e6   defined in Debug\delay.o
+_ADC_DB3RL              000053e7   defined in Debug\delay.o
+_ADC_DB4R               000053e8   defined in Debug\delay.o
+_ADC_DB4RH              000053e8   defined in Debug\delay.o
+_ADC_DB4RL              000053e9   defined in Debug\delay.o
+_ADC_DB5R               000053ea   defined in Debug\delay.o
+_ADC_DB5RH              000053ea   defined in Debug\delay.o
+_ADC_DB5RL              000053eb   defined in Debug\delay.o
+_ADC_DB6R               000053ec   defined in Debug\delay.o
+_ADC_DB6RH              000053ec   defined in Debug\delay.o
+_ADC_DB6RL              000053ed   defined in Debug\delay.o
+_ADC_DB7R               000053ee   defined in Debug\delay.o
+_ADC_DB7RH              000053ee   defined in Debug\delay.o
+_ADC_DB7RL              000053ef   defined in Debug\delay.o
+_ADC_DB8R               000053f0   defined in Debug\delay.o
+_ADC_DB8RH              000053f0   defined in Debug\delay.o
+_ADC_DB8RL              000053f1   defined in Debug\delay.o
+_ADC_DB9R               000053f2   defined in Debug\delay.o
+_ADC_DB9RH              000053f2   defined in Debug\delay.o
+_ADC_DB9RL              000053f3   defined in Debug\delay.o
+_ADC_DR                 00005404   defined in Debug\delay.o
+_ADC_DRH                00005404   defined in Debug\delay.o
+_ADC_DRL                00005405   defined in Debug\delay.o
+_ADC_HTR                00005408   defined in Debug\delay.o
+_ADC_HTRH               00005408   defined in Debug\delay.o
+_ADC_HTRL               00005409   defined in Debug\delay.o
+_ADC_LTR                0000540a   defined in Debug\delay.o
+_ADC_LTRH               0000540a   defined in Debug\delay.o
+_ADC_LTRL               0000540b   defined in Debug\delay.o
+_ADC_TDR                00005406   defined in Debug\delay.o
+_ADC_TDRH               00005406   defined in Debug\delay.o
+_ADC_TDRL               00005407   defined in Debug\delay.o
+_AWU_APR                000050f1   defined in Debug\delay.o
+_AWU_CSR                000050f0   defined in Debug\delay.o
+_AWU_TBR                000050f2   defined in Debug\delay.o
+_BEEP_CSR               000050f3   defined in Debug\delay.o
+_Beep_State             00000021   defined in Debug\main.o section .ubsct
+_Beep_init              000082d1   defined in Debug\main.o section .text
+_CFG_GCR                00007f60   defined in Debug\delay.o
+_CLK_CANCCR             000050cb   defined in Debug\delay.o
+_CLK_CCOR               000050c9   defined in Debug\delay.o
+_CLK_CKDIVR             000050c6   defined in Debug\delay.o
+_CLK_CMSR               000050c3   defined in Debug\delay.o
+_CLK_CSSR               000050c8   defined in Debug\delay.o
+_CLK_ECKR               000050c1   defined in Debug\delay.o
+_CLK_HSITRIMR           000050cc   defined in Debug\delay.o
+_CLK_ICKR               000050c0   defined in Debug\delay.o
+_CLK_PCKENR1            000050c7   defined in Debug\delay.o
+_CLK_PCKENR2            000050ca   defined in Debug\delay.o
+_CLK_SWCR               000050c5   defined in Debug\delay.o
+_CLK_SWIMCCR            000050cd   defined in Debug\delay.o
+_CLK_SWR                000050c4   defined in Debug\delay.o
+_ClearBitMask           00008750   defined in Debug\rc522.o section .text
+_EXTI_CR1               000050a0   defined in Debug\delay.o
+_EXTI_CR2               000050a1   defined in Debug\delay.o
+_FLASH_CR1              0000505a   defined in Debug\delay.o
+_FLASH_CR2              0000505b   defined in Debug\delay.o
+_FLASH_DUKR             00005064   defined in Debug\delay.o
+_FLASH_FPR              0000505d   defined in Debug\delay.o
+_FLASH_IAPSR            0000505f   defined in Debug\delay.o
+_FLASH_NCR2             0000505c   defined in Debug\delay.o
+_FLASH_NFPR             0000505e   defined in Debug\delay.o
+_FLASH_PUKR             00005062   defined in Debug\delay.o
+_Find_State             00000023   defined in Debug\main.o section .ubsct
+_I2C_CCRH               0000521c   defined in Debug\delay.o
+_I2C_CCRL               0000521b   defined in Debug\delay.o
+_I2C_CR1                00005210   defined in Debug\delay.o
+_I2C_CR2                00005211   defined in Debug\delay.o
+_I2C_DR                 00005216   defined in Debug\delay.o
+_I2C_FREQR              00005212   defined in Debug\delay.o
+_I2C_ITR                0000521a   defined in Debug\delay.o
+_I2C_OARH               00005214   defined in Debug\delay.o
+_I2C_OARL               00005213   defined in Debug\delay.o
+_I2C_PECR               0000521e   defined in Debug\delay.o
+_I2C_SR1                00005217   defined in Debug\delay.o
+_I2C_SR2                00005218   defined in Debug\delay.o
+_I2C_SR3                00005219   defined in Debug\delay.o
+_I2C_TRISER             0000521d   defined in Debug\delay.o
+_ITC_SPR1               00007f70   defined in Debug\delay.o
+_ITC_SPR2               00007f71   defined in Debug\delay.o
+_ITC_SPR3               00007f72   defined in Debug\delay.o
+_ITC_SPR4               00007f73   defined in Debug\delay.o
+_ITC_SPR5               00007f74   defined in Debug\delay.o
+_ITC_SPR6               00007f75   defined in Debug\delay.o
+_ITC_SPR7               00007f76   defined in Debug\delay.o
+_IWDG_KR                000050e0   defined in Debug\delay.o
+_IWDG_PR                000050e1   defined in Debug\delay.o
+_IWDG_RLR               000050e2   defined in Debug\delay.o
+_IWDG_init              000082bc   defined in Debug\main.o section .text
+_KM1_State              00000022   defined in Debug\main.o section .ubsct
+_KM1_init               000082de   defined in Debug\main.o section .text
+_PA_CR1                 00005003   defined in Debug\delay.o
+_PA_CR2                 00005004   defined in Debug\delay.o
+_PA_DDR                 00005002   defined in Debug\delay.o
+_PA_IDR                 00005001   defined in Debug\delay.o
+_PA_ODR                 00005000   defined in Debug\delay.o
+_PB_CR1                 00005008   defined in Debug\delay.o
+_PB_CR2                 00005009   defined in Debug\delay.o
+_PB_DDR                 00005007   defined in Debug\delay.o
+_PB_IDR                 00005006   defined in Debug\delay.o
+_PB_ODR                 00005005   defined in Debug\delay.o
+_PC_CR1                 0000500d   defined in Debug\delay.o
+_PC_CR2                 0000500e   defined in Debug\delay.o
+_PC_DDR                 0000500c   defined in Debug\delay.o
+_PC_IDR                 0000500b   defined in Debug\delay.o
+_PC_ODR                 0000500a   defined in Debug\delay.o
+_PD_CR1                 00005012   defined in Debug\delay.o
+_PD_CR2                 00005013   defined in Debug\delay.o
+_PD_DDR                 00005011   defined in Debug\delay.o
+_PD_IDR                 00005010   defined in Debug\delay.o
+_PD_ODR                 0000500f   defined in Debug\delay.o
+_PE_CR1                 00005017   defined in Debug\delay.o
+_PE_CR2                 00005018   defined in Debug\delay.o
+_PE_DDR                 00005016   defined in Debug\delay.o
+_PE_IDR                 00005015   defined in Debug\delay.o
+_PE_ODR                 00005014   defined in Debug\delay.o
+_PF_CR1                 0000501c   defined in Debug\delay.o
+_PF_CR2                 0000501d   defined in Debug\delay.o
+_PF_DDR                 0000501b   defined in Debug\delay.o
+_PF_IDR                 0000501a   defined in Debug\delay.o
+_PF_ODR                 00005019   defined in Debug\delay.o
+_PcdAntennaOff          000088e0   defined in Debug\rc522.o section .text
+_PcdAntennaOn           000088d0   defined in Debug\rc522.o section .text
+_PcdAnticoll            000085a4   defined in Debug\rc522.o section .text
+                                   used in Debug\main.o
+_PcdComMF522_P          00008765   defined in Debug\rc522.o section .text
+_PcdRequest             00008461   defined in Debug\rc522.o section .text
+                                   used in Debug\main.o
+_PcdSelect              0000865f   defined in Debug\rc522.o section .text
+_RC522_Init             000083c5   defined in Debug\rc522.o section .text
+                                   used in Debug\main.o
+_RST_SR                 000050b3   defined in Debug\delay.o
+_ReadRawRC              000086e5   defined in Debug\rc522.o section .text
+_SBuf                   00000024   defined in Debug\main.o section .ubsct
+_SPI_CR1                00005200   defined in Debug\delay.o
+_SPI_CR2                00005201   defined in Debug\delay.o
+_SPI_CRCPR              00005205   defined in Debug\delay.o
+_SPI_DR                 00005204   defined in Debug\delay.o
+_SPI_ICR                00005202   defined in Debug\delay.o
+_SPI_RW                 000083a4   defined in Debug\rc522.o section .text
+_SPI_RXCRCR             00005206   defined in Debug\delay.o
+_SPI_SR                 00005203   defined in Debug\delay.o
+_SPI_SendByte           00008901   defined in Debug\spi.o section .text
+_SPI_TXCRCR             00005207   defined in Debug\delay.o
+_SPI_conf               000088f0   defined in Debug\spi.o section .text
+                                   used in Debug\main.o
+_SetBitMask             0000873c   defined in Debug\rc522.o section .text
+_TIM1_ARR               00005262   defined in Debug\delay.o
+_TIM1_ARRH              00005262   defined in Debug\delay.o
+_TIM1_ARRL              00005263   defined in Debug\delay.o
+_TIM1_BKR               0000526d   defined in Debug\delay.o
+_TIM1_CCER1             0000525c   defined in Debug\delay.o
+_TIM1_CCER2             0000525d   defined in Debug\delay.o
+_TIM1_CCMR1             00005258   defined in Debug\delay.o
+_TIM1_CCMR2             00005259   defined in Debug\delay.o
+_TIM1_CCMR3             0000525a   defined in Debug\delay.o
+_TIM1_CCMR4             0000525b   defined in Debug\delay.o
+_TIM1_CCR1              00005265   defined in Debug\delay.o
+_TIM1_CCR1H             00005265   defined in Debug\delay.o
+_TIM1_CCR1L             00005266   defined in Debug\delay.o
+_TIM1_CCR2              00005267   defined in Debug\delay.o
+_TIM1_CCR2H             00005267   defined in Debug\delay.o
+_TIM1_CCR2L             00005268   defined in Debug\delay.o
+_TIM1_CCR3              00005269   defined in Debug\delay.o
+_TIM1_CCR3H             00005269   defined in Debug\delay.o
+_TIM1_CCR3L             0000526a   defined in Debug\delay.o
+_TIM1_CCR4              0000526b   defined in Debug\delay.o
+_TIM1_CCR4H             0000526b   defined in Debug\delay.o
+_TIM1_CCR4L             0000526c   defined in Debug\delay.o
+_TIM1_CNTR              0000525e   defined in Debug\delay.o
+_TIM1_CNTRH             0000525e   defined in Debug\delay.o
+_TIM1_CNTRL             0000525f   defined in Debug\delay.o
+_TIM1_CR1               00005250   defined in Debug\delay.o
+_TIM1_CR2               00005251   defined in Debug\delay.o
+_TIM1_DTR               0000526e   defined in Debug\delay.o
+_TIM1_EGR               00005257   defined in Debug\delay.o
+_TIM1_ETR               00005253   defined in Debug\delay.o
+_TIM1_IER               00005254   defined in Debug\delay.o
+_TIM1_OISR              0000526f   defined in Debug\delay.o
+_TIM1_PSCR              00005260   defined in Debug\delay.o
+_TIM1_PSCRH             00005260   defined in Debug\delay.o
+_TIM1_PSCRL             00005261   defined in Debug\delay.o
+_TIM1_RCR               00005264   defined in Debug\delay.o
+_TIM1_SMCR              00005252   defined in Debug\delay.o
+_TIM1_SR1               00005255   defined in Debug\delay.o
+_TIM1_SR2               00005256   defined in Debug\delay.o
+_TIM2_ARR               0000530f   defined in Debug\delay.o
+_TIM2_ARRH              0000530f   defined in Debug\delay.o
+_TIM2_ARRL              00005310   defined in Debug\delay.o
+_TIM2_CCER1             0000530a   defined in Debug\delay.o
+_TIM2_CCER2             0000530b   defined in Debug\delay.o
+_TIM2_CCMR1             00005307   defined in Debug\delay.o
+_TIM2_CCMR2             00005308   defined in Debug\delay.o
+_TIM2_CCMR3             00005309   defined in Debug\delay.o
+_TIM2_CCR1              00005311   defined in Debug\delay.o
+_TIM2_CCR1H             00005311   defined in Debug\delay.o
+_TIM2_CCR1L             00005312   defined in Debug\delay.o
+_TIM2_CCR2              00005313   defined in Debug\delay.o
+_TIM2_CCR2H             00005313   defined in Debug\delay.o
+_TIM2_CCR2L             00005314   defined in Debug\delay.o
+_TIM2_CCR3              00005315   defined in Debug\delay.o
+_TIM2_CCR3H             00005315   defined in Debug\delay.o
+_TIM2_CCR3L             00005316   defined in Debug\delay.o
+_TIM2_CNTR              0000530c   defined in Debug\delay.o
+_TIM2_CNTRH             0000530c   defined in Debug\delay.o
+_TIM2_CNTRL             0000530d   defined in Debug\delay.o
+_TIM2_CR1               00005300   defined in Debug\delay.o
+_TIM2_EGR               00005306   defined in Debug\delay.o
+_TIM2_IER               00005303   defined in Debug\delay.o
+_TIM2_PSCR              0000530e   defined in Debug\delay.o
+_TIM2_SR1               00005304   defined in Debug\delay.o
+_TIM2_SR2               00005305   defined in Debug\delay.o
+_TIM4_ARR               00005348   defined in Debug\delay.o
+_TIM4_CNTR              00005346   defined in Debug\delay.o
+_TIM4_CR1               00005340   defined in Debug\delay.o
+_TIM4_EGR               00005345   defined in Debug\delay.o
+_TIM4_IER               00005343   defined in Debug\delay.o
+_TIM4_PSCR              00005347   defined in Debug\delay.o
+_TIM4_SR                00005344   defined in Debug\delay.o
+_UART1_BRR1             00005232   defined in Debug\delay.o
+_UART1_BRR2             00005233   defined in Debug\delay.o
+_UART1_CR1              00005234   defined in Debug\delay.o
+_UART1_CR2              00005235   defined in Debug\delay.o
+_UART1_CR3              00005236   defined in Debug\delay.o
+_UART1_CR4              00005237   defined in Debug\delay.o
+_UART1_CR5              00005238   defined in Debug\delay.o
+_UART1_DR               00005231   defined in Debug\delay.o
+_UART1_GTR              00005239   defined in Debug\delay.o
+_UART1_PSCR             0000523a   defined in Debug\delay.o
+_UART1_ReceiveByte      0000896d   defined in Debug\uart.o section .text
+_UART1_SR               00005230   defined in Debug\delay.o
+_UART1_SendByte         00008943   defined in Debug\uart.o section .text
+                                   used in Debug\main.o
+_UART1_SendString       0000894e   defined in Debug\uart.o section .text
+_WWDG_CR                000050d1   defined in Debug\delay.o
+_WWDG_WR                000050d2   defined in Debug\delay.o
+_WriteRawRC             00008712   defined in Debug\rc522.o section .text
+__endmem                000001ff   defined in command file
+                                   *** not used ***
+__endzp                 0000006d   defined in command file section .ubsct
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__idesc__               00008080   defined in linker section .init
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__memory                00000100   defined in command file section .bss
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__stack                 000003ff   defined in command file
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__startmem              00000100   defined in command file section .bss
+                                   *** not used ***
+__stext                 000080a9   defined in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8 section .text
+                                   used in Debug\stm8_interrupt_vector.o
+__vectab                00008000   defined in Debug\stm8_interrupt_vector.o section .const
+_cal_CRC                0000824a   defined in Debug\main.o section .text
+_card_id                00000063   defined in Debug\main.o section .ubsct
+_crc_get                00000061   defined in Debug\main.o section .ubsct
+_crc_tab                00000000   defined in Debug\main.o section .bsct, initialized
+_delayms                000080f4   defined in Debug\delay.o section .text
+                                   used in Debug\main.o Debug\rc522.o
+_exit                   000080f2   defined in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8 section .text
+_fHasRATS               00000020   defined in Debug\rc522.o section .bsct, initialized
+_main                   0000811a   defined in Debug\main.o section .text
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+_state                  00000060   defined in Debug\main.o section .ubsct
+_uart_conf              00008922   defined in Debug\uart.o section .text
+                                   used in Debug\main.o
+c_x                     00000067   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)xreg.o section .ubsct
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+                                           Debug\rc522.o
+c_y                     0000006a   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)yreg.o section .ubsct
+                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+f_NonHandledInterrupt   0000897f   defined in Debug\stm8_interrupt_vector.o section .text
+f_UART1_RX_IRQHandler   000082eb   defined in Debug\main.o section .text
+                                   used in Debug\stm8_interrupt_vector.o

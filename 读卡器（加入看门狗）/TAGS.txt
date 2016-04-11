@@ -1,0 +1,47 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BaudRate	uart.h	8;"	macro
+DEF_16BIT_REG_AT	stm8s103k.h	20;"	macro
+DEF_16BIT_REG_AT	stm8s103k.h	25;"	macro
+DEF_8BIT_REG_AT	stm8s103k.h	19;"	macro
+DEF_8BIT_REG_AT	stm8s103k.h	24;"	macro
+HSIClockFreq	uart.h	7;"	macro
+NonHandledInterrupt	stm8_interrupt_vector.c	12;"	function	signature:(void)
+RxBufferSize	uart.h	11;"	macro
+SPI_SendByte	spi\spi.c	38;"	function	signature:(unsigned char byte)
+SPI_SendByte	spi\spi.h	9;"	prototype	signature:(unsigned char byte)
+SPI_conf	spi\spi.c	21;"	function
+SPI_conf	spi\spi.h	8;"	prototype	signature:()
+STM8S103K	stm8s103k.h	12;"	macro
+UART1_FLAG_RXNE	uart.h	10;"	macro
+UART1_FLAG_TXE	uart.h	9;"	macro
+UART1_RX_IRQHandler	main.c	23;"	function	signature:(void)
+UART1_RX_IRQHandler	stm8_interrupt_vector.c	21;"	prototype	file:	signature:(void)
+UART1_ReceiveByte	uart.c	95;"	function	signature:(void)
+UART1_ReceiveByte	uart.h	15;"	prototype	signature:(void)
+UART1_SendByte	uart.c	60;"	function	signature:(u8 data)
+UART1_SendByte	uart.h	13;"	prototype	signature:(u8 data)
+UART1_SendString	uart.c	78;"	function	signature:(u8* Data,u16 len)
+UART1_SendString	uart.h	14;"	prototype	signature:(u8* Data,u16 len)
+__MODS0__	..\..\..\..\program files (x86)\cosmic\cxstm8\hstm8\mods0.h	11;"	macro
+__SPI_H	spi\spi.h	3;"	macro
+__STM8S103K__	stm8s103k.h	6;"	macro
+__UART_H	uart.h	2;"	macro
+__delay__	delay\delay.h	2;"	macro
+_stext	stm8_interrupt_vector.c	20;"	prototype	file:
+_vectab	stm8_interrupt_vector.c	23;"	variable
+delayms	delay\delay.c	3;"	function	signature:(u16 ms)
+delayms	delay\delay.h	9;"	prototype	signature:(u16 ms)
+interrupt_handler	stm8_interrupt_vector.c	9;"	member	struct:interrupt_vector	file:
+interrupt_handler_t	stm8_interrupt_vector.c	5;"	typedef	file:
+interrupt_instruction	stm8_interrupt_vector.c	8;"	member	struct:interrupt_vector	file:
+interrupt_vector	stm8_interrupt_vector.c	7;"	struct	file:
+main	main.c	9;"	function
+u16	delay\delay.h	7;"	typedef
+u8	delay\delay.h	6;"	typedef
+uart_conf	uart.c	29;"	function	signature:(void)
+uart_conf	uart.h	12;"	prototype	signature:(void)
